@@ -1,0 +1,99 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(25, 25, 25);
+}
+
+#rockPaperScissors {
+    font-size: 4em;
+    color: white;
+}
+
+button {
+    color: rgb(5, 5, 5);
+    padding: 2px 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 30px;
+    border-radius: 10px;
+    height: 50px;
+
+    background-color: #d8d8d8;
+}
+
+.btn {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    margin: 20px;
+    border-radius: 75px;
+    border: 2px solid white;
+    background-color:  rgb(25, 25, 25);
+}
+
+.btn img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    height: 75px;
+    width: 75px;
+}
+
+#showDecision {
+    color: white;
+    font-size: 3em;
+    margin-bottom: 50px;
+}
+
+#comparing {
+    font-size: 1.5em;
+    color: white;
+    margin-bottom: 50px;
+}
+
+#comparing img {
+    height: 100px;
+}
+
+#scoreRecords {
+    font-size: 1.5em;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    #rockPaperScissors {
+        font-size: 3em;
+    }
+    button {
+        font-size: 18px;
+    }
+    .btn {
+        height: 80px;
+        margin: 10px;
+        width: 80px;
+    }
+    .btn img {
+        height: 40px;
+        width: 40px;
+    }
+    #showDecision {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+    #comparing {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+    #comparing img {
+        height: 40px;
+    }
+    #scoreRecords {
+        font-size: 1.2em;
+    }
+}

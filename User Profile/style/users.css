@@ -1,0 +1,31 @@
+.grid-user-profile-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 10px;
+}
+
+.user-profile-container{
+    margin: 50px 10px;
+    width: 100%;
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.image-container img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.user-profile-container p{
+    margin-top: 10px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to LocalStorage</title>
+</head>
+<body>
+  <h2>Upload and Store Image</h2>
+  
+  <input type="file" class="image-input">
+  <button onclick="saveImage()">Save Image</button>
+  <br>
+  <img class="stored-image" alt="Stored Image will appear here" width="200">
+  
+  <script>
+    function saveImage() {
+      const fileInput = document.querySelector('.image-input');
+      const file = fileInput.files[0];
+      
+      if (file) {
+        const reader = new FileReader();
+        
+        reader.onloadend = function () {
+          // Convert the image to Base64 string
+          const base64Image = reader.result;
+          
+          // Store the Base64 image string in localStorage
+          localStorage.setItem('storedImage', base64Image);
+          
+          // Display the stored image
+          displayStoredImage();
+        };
+        
+        // Read the image file as a data URL (Base64 string)
+        reader.readAsDataURL(file);
+      } else {
+        alert("Please select an image first.");
+      }
+    }
+
+    function displayStoredImage() {
+      const storedImage = localStorage.getItem('storedImage');
+      if (storedImage) {
+        document.querySelector('.stored-image').src = storedImage;
+      }
+    }
+
+    // Display stored image on page load if available
+    window.onload = displayStoredImage;
+  </script>
+</body>
+</html>

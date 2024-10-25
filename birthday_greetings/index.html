@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Birthday Greetings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B5CF6;
+            --secondary: #EC4899;
+            --background: #0F172A;
+            --text: #F1F5F9;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 5s ease infinite;
+        }
+        .message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .cake {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        .cake::before {
+            content: "";
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 50%;
+            height: 25%;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50% 50% 0 0;
+        }
+        .cake::after {
+            content: "🎂";
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+        }
+        .balloons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .balloon {
+            width: 30px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 10px;
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+        }
+        .balloon::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            transform: translateX(-50%);
+        }
+        .button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f0f;
+            opacity: 0;
+        }
+        @media (max-width: 768px) {
+            .card { padding: 2rem; }
+            h1 { font-size: 2.5rem; }
+            .message { font-size: 1rem; }
+            .cake { width: 100px; height: 100px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Happy Birthday, <span id="name">Inday</span>!</h1>
+            <div class="cake"></div>
+            <p class="message">May your day be filled with joy, laughter, and unforgettable moments. Here's to another year of amazing adventures!</p>
+            <div class="balloons">
+                <div class="balloon" style="background-color: #FF6B6B; animation-delay: 0s;"></div>
+                <div class="balloon" style="background-color: #4ECDC4; animation-delay: 0.5s;"></div>
+                <div class="balloon" style="background-color: #45B7D1; animation-delay: 1s;"></div>
+                <div class="balloon" style="background-color: #F7D065; animation-delay: 1.5s;"></div>
+                <div class="balloon" style="background-color: #C06C84; animation-delay: 2s;"></div>
+            </div>
+            <button class="button" onclick="surprise()">Celebrate!</button>
+        </div>
+    </div>
+
+    <script>
+        function surprise() {
+            confetti();
+            playBirthdaySong();
+        }
+
+        function confetti() {
+            const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#F7D065', '#C06C84'];
+            for (let i = 0; i < 100; i++) {
+                createConfettiPiece(colors[Math.floor(Math.random() * colors.length)]);
+            }
+        }
+
+        function createConfettiPiece(color) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.backgroundColor = color;
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            document.body.appendChild(confetti);
+
+            const animation = confetti.animate([
+                { transform: 'translate3d(0, 0, 0) rotate(0deg)', opacity: 1 },
+                { transform: `translate3d(${Math.random() * 300 - 150}px, 100vh, 0) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 3000,
+                easing: 'cubic-bezier(0, .9, .57, 1)',
+                delay: Math.random() * 2000
+            });
+
+            animation.onfinish = () => confetti.remove();
+        }
+
+        function playBirthdaySong() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const notes = [
+                { note: 'C4', duration: 0.5 }, { note: 'C4', duration: 0.5 },
+                { note: 'D4', duration: 1 }, { note: 'C4', duration: 1 },
+                { note: 'F4', duration: 1 }, { note: 'E4', duration: 2 },
+                { note: 'C4', duration: 0.5 }, { note: 'C4', duration: 0.5 },
+                { note: 'D4', duration: 1 }, { note: 'C4', duration: 1 },
+                { note: 'G4', duration: 1 }, { note: 'F4', duration: 2 },
+                { note: 'C4', duration: 0.5 }, { note: 'C4', duration: 0.5 },
+                { note: 'C5', duration: 1 }, { note: 'A4', duration: 1 },
+                { note: 'F4', duration: 1 }, { note: 'E4', duration: 1 },
+                { note: 'D4', duration: 1 }, { note: 'A#4', duration: 0.5 },
+                { note: 'A#4', duration: 0.5 }, { note: 'A4', duration: 1 },
+                { note: 'F4', duration: 1 }, { note: 'G4', duration: 1 },
+                { note: 'F4', duration: 2 }
+            ];
+
+            let time = audioContext.currentTime;
+            notes.forEach(note => {
+                const osc = audioContext.createOscillator();
+                osc.type = 'sine';
+                osc.frequency.value = noteToFreq(note.note);
+                osc.connect(audioContext.destination);
+                osc.start(time);
+                osc.stop(time + note.duration * 0.3);
+                time += note.duration * 0.3;
+            });
+        }
+
+        function noteToFreq(note) {
+            const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+            const octave = parseInt(note.slice(-1));
+            const semitone = notes.indexOf(note.slice(0, -1));
+            return 440 * Math.pow(2, (semitone - 9) / 12 + (octave - 4));
+        }
+
+        // Personalization
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name') || 'Inday';
+        document.getElementById('name').textContent = name;
+    </script>
+</body>
+</html>
